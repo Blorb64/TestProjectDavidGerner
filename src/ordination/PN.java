@@ -38,6 +38,16 @@ public class PN extends Ordination{
     public double doegnDosis() {
         LocalDate firstDay = datoerAnvendDosis.getFirst();
         LocalDate lastDay = datoerAnvendDosis.getLast();
+
+        for (LocalDate dato : datoerAnvendDosis) {
+            if(dato.isBefore(firstDay)){
+                firstDay = dato;
+            }
+            if(dato.isAfter(lastDay)) {
+                lastDay = dato;
+            }
+        }
+
         return (antalGangeAnvendt() * this.antalEnheder) / ChronoUnit.DAYS.between(firstDay, lastDay);
     }
 
