@@ -17,9 +17,7 @@ public class DagligFast extends Ordination{
 
     @Override
     public double samletDosis() {
-        double antalDate = ChronoUnit.DAYS.between(super.getStartDato(), super.getSlutDato());
-        double sum = doegnDosis();
-        return sum * antalDate;
+        return doegnDosis() * antalDage();
     }
 
     @Override
@@ -34,6 +32,7 @@ public class DagligFast extends Ordination{
 
     @Override
     public String getType() {
-        return "";
+        return String.format("Daglig fast: startdato: %s, slutdato: %s antal doser %d"
+                , super.getStartDato(), super.getSlutDato(), doser.length);
     }
 }

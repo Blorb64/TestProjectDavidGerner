@@ -10,7 +10,7 @@ public class DagligSkæv extends Ordination{
         super(startDato, slutDato);
     }
 
-    public void addAntalDoser(Dosis dosis) {
+    public void addDoser(Dosis dosis) {
         this.doser.add(dosis);
     }
 
@@ -20,16 +20,21 @@ public class DagligSkæv extends Ordination{
 
     @Override
     public double samletDosis() {
-        return 0;
+        return doegnDosis() * antalDage();
     }
 
     @Override
     public double doegnDosis() {
-        return 0;
+        double sum = 0;
+        for (Dosis dosis : doser) {
+            sum +=dosis.getAntal();
+        }
+        return sum;
     }
 
     @Override
     public String getType() {
-        return "";
+        return String.format("Daglig skaev: startdato: %s, slutdato: %s antal doser %d"
+                , super.getStartDato(), super.getSlutDato(), doser.size());
     }
 }
