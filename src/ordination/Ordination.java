@@ -7,6 +7,11 @@ public abstract class Ordination {
     private final LocalDate startDato;
     private final LocalDate slutDato;
 
+    public Ordination(LocalDate startDato, LocalDate slutDato) {
+        this.startDato = startDato;
+        this.slutDato = slutDato;
+    }
+
     public LocalDate getStartDato() {
         return startDato;
     }
