@@ -7,6 +7,7 @@ import java.util.List;
 import ordination.*;
 import storage.Storage;
 
+@SuppressWarnings("UnusedReturnValue")
 public abstract class Controller {
     private static Storage storage;
 
@@ -24,7 +25,17 @@ public abstract class Controller {
             LocalDate startDato, LocalDate slutDato, Patient patient, Lægemiddel lægemiddel,
             double antal) {
 
-        return null;
+        if (slutDato.isBefore(startDato))
+            throw new IllegalArgumentException("Startdato Skal være før slutdato");
+
+        PN pNOrdination = new PN(startDato, slutDato, antal);
+
+        if (lægemiddel != null)
+            pNOrdination.setLægemiddel(lægemiddel);
+
+        patient.addOrdinationer(pNOrdination);
+
+        return pNOrdination;
     }
 
     /**
@@ -52,6 +63,8 @@ public abstract class Controller {
                 dagligFast.setLægemiddel(lægemiddel);
             }
 
+            patient.addOrdinationer(dagligFast);
+
         return dagligFast;
     }
 
@@ -67,6 +80,17 @@ public abstract class Controller {
             LocalDate startDen, LocalDate slutDen, Patient patient, Lægemiddel lægemiddel,
             LocalTime[] klokkeSlet, double[] antalEnheder) {
 
+        if (slutDen.isBefore(startDen))
+            throw new IllegalArgumentException("Startdato Skal være før slutdato");
+
+        if (klokkeSlet.length != antalEnheder.length)
+            throw new IllegalArgumentException("Mængden af klokkeslet og Mængden af antal enheder stemmer ikke overens");
+
+
+        //TODO
+            //der mangler noget i dagligskæv som det er lige nu tror jeg -Gerner
+        DagligSkæv dagligSkæv = new DagligSkæv(startDen, slutDen);
+
         return null;
     }
 
@@ -76,7 +100,10 @@ public abstract class Controller {
      * kastes en IllegalArgumentException.
      */
     public static void anvendOrdinationPN(PN ordination, LocalDate dato) {
+        if (dato.isBefore(ordination.getStartDato()) || dato.isAfter(ordination.getSlutDato()))
+            throw new IllegalArgumentException("dato er udenfor ordinations periode");
 
+        ordination.anvendDosis(dato);
     }
 
     /**
@@ -84,8 +111,18 @@ public abstract class Controller {
      * (afhænger af patientens vægt).
      */
     public static double anbefaletDosisPrDøgn(Patient patient, Lægemiddel lægemiddel) {
+        double patientVægt = patient.getVægt();
 
-        return 0;
+        if (patientVægt < 25) {
+            // let anvendes hvis patient vejer < 25 kg
+            return lægemiddel.getEnhedPrKgPrDøgnLet();
+        } else if (patientVægt <= 120) {
+            // faktor der anvendes hvis 25 kg <= patient vægt <= 120 kg
+            return lægemiddel.getEnhedPrKgPrDøgnNormal();
+        } else {
+            // faktor der anvendes hvis patient vægt > 120 kg
+            return lægemiddel.getEnhedPrKgPrDøgnTung();
+        }
     }
 
     /** Returner antal ordinationer for det givne vægtinterval og det givne lægemiddel. */
