@@ -37,7 +37,22 @@ public abstract class Controller {
             LocalDate startDato, LocalDate slutDato, Patient patient, Lægemiddel lægemiddel,
             double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
 
-        return null;
+            if (slutDato.isBefore(startDato)){
+                throw new IllegalArgumentException("Start dato skal være før slut dato");
+            }
+
+            Dosis[] doser = {
+                    new Dosis(LocalTime.parse("08:00"), morgenAntal),
+                    new Dosis(LocalTime.parse("12:00"), middagAntal),
+                    new Dosis(LocalTime.parse("18:00"), aftenAntal),
+                    new Dosis(LocalTime.parse("22:00"), natAntal)
+            };
+            DagligFast dagligFast = new DagligFast(startDato, slutDato, doser);
+            if (lægemiddel !=null){
+                dagligFast.setLægemiddel(lægemiddel);
+            }
+
+        return dagligFast;
     }
 
     /**

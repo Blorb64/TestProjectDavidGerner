@@ -1,13 +1,14 @@
 package ordination;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class DagligFast extends Ordination{
-    Dosis[] doser = new Dosis[4];
+    private final Dosis[] doser;
 
-    public DagligFast(LocalDate startDato, LocalDate slutDato, Dosis[] antalDoser) {
+    public DagligFast(LocalDate startDato, LocalDate slutDato, Dosis[] doser) {
         super(startDato, slutDato);
-        this.doser = antalDoser;
+        this.doser = doser;
     }
 
     public Dosis[] getDoser() {
@@ -16,12 +17,19 @@ public class DagligFast extends Ordination{
 
     @Override
     public double samletDosis() {
-        return 0;
+        double antalDate = ChronoUnit.DAYS.between(super.getStartDato(), super.getSlutDato());
+        double sum = doegnDosis();
+        return sum * antalDate;
     }
 
     @Override
     public double doegnDosis() {
-        return 0;
+        double sum=0;
+
+        for (Dosis dosis : doser) {
+            sum += dosis.getAntal();
+        }
+        return sum;
     }
 
     @Override
