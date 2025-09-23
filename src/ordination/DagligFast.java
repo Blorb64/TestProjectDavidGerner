@@ -1,18 +1,17 @@
 package ordination;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class DagligFast extends Ordination{
-    Dosis[] antalDoser = new Dosis[4];
+    Dosis[] doser = new Dosis[4];
 
     public DagligFast(LocalDate startDato, LocalDate slutDato, Dosis[] antalDoser) {
         super(startDato, slutDato);
-        this.antalDoser = antalDoser;
+        this.doser = antalDoser;
     }
 
-    public Dosis[] getAntalDoser() {
-        return antalDoser;
+    public Dosis[] getDoser() {
+        return doser;
     }
 
     @Override
@@ -21,7 +20,7 @@ public class DagligFast extends Ordination{
     }
 
     @Override
-    public double døgnDosis() {
+    public double doegnDosis() {
         return 0;
     }
 

@@ -4,18 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DagligSkæv extends Ordination{
-    ArrayList<Dosis> antalDoser = new ArrayList<>();
+    ArrayList<Dosis> doser = new ArrayList<>();
 
     public DagligSkæv(LocalDate startDato, LocalDate slutDato) {
         super(startDato, slutDato);
     }
 
     public void addAntalDoser(Dosis dosis) {
-        this.antalDoser.add(dosis);
+        this.doser.add(dosis);
     }
 
-    public ArrayList<Dosis> getAntalDoser() {
-        return antalDoser;
+    public ArrayList<Dosis> getDoser() {
+        return doser;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class DagligSkæv extends Ordination{
     }
 
     @Override
-    public double døgnDosis() {
+    public double doegnDosis() {
         return 0;
     }
 

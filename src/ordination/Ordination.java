@@ -30,7 +30,7 @@ public abstract class Ordination {
         return (int) ChronoUnit.DAYS.between(startDato, slutDato) + 1;
     }
 
-    public Lægemiddel getLægemiddel() {
+    public Lægemiddel getLaegemiddel() {
         return lægemiddel;
     }
 
@@ -47,7 +47,7 @@ public abstract class Ordination {
     public abstract double samletDosis();
 
     /** Returner den gennemsnitlige dosis givet per dag. */
-    public abstract double døgnDosis();
+    public abstract double doegnDosis();
 
     /** Returner ordinationstypen som en String. */
     public abstract String getType();

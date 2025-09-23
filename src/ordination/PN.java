@@ -33,7 +33,7 @@ public class PN extends Ordination{
     }
 
     @Override
-    public double døgnDosis() {
+    public double doegnDosis() {
         return 0;
     }
 
