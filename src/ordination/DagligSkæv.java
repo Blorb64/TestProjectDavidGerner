@@ -10,8 +10,8 @@ public class DagligSkæv extends Ordination{
         super(startDato, slutDato);
     }
 
-    public void addDoser(Dosis dosis) {
-        this.doser.add(dosis);
+    public void addAlleDoser(ArrayList<Dosis> doser) {
+        this.doser.addAll(doser);
     }
 
     public ArrayList<Dosis> getDoser() {

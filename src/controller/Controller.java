@@ -2,9 +2,11 @@ package controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import ordination.*;
+import org.jspecify.annotations.Nullable;
 import storage.Storage;
 
 @SuppressWarnings("UnusedReturnValue")
@@ -77,21 +79,32 @@ public abstract class Controller {
      * Pre: I antalEnheder er alle tal >= 0.
      */
     public static DagligSkæv opretDagligSkævOrdination(
-            LocalDate startDen, LocalDate slutDen, Patient patient, Lægemiddel lægemiddel,
+            LocalDate startDen, LocalDate slutDen, Patient patient, @Nullable Lægemiddel lægemiddel,
             LocalTime[] klokkeSlet, double[] antalEnheder) {
 
         if (slutDen.isBefore(startDen))
             throw new IllegalArgumentException("Startdato Skal være før slutdato");
 
+
         if (klokkeSlet.length != antalEnheder.length)
             throw new IllegalArgumentException("Mængden af klokkeslet og Mængden af antal enheder stemmer ikke overens");
 
+        ArrayList<Dosis> doser  = new ArrayList<>();
 
-        //TODO
-            //der mangler noget i dagligskæv som det er lige nu tror jeg -Gerner
+        for (int i = 0; i < antalEnheder.length; i++) {
+            doser.add(new Dosis(klokkeSlet[i], antalEnheder[i]));
+        }
+
         DagligSkæv dagligSkæv = new DagligSkæv(startDen, slutDen);
 
-        return null;
+        if(lægemiddel!= null){
+            dagligSkæv.setLægemiddel(lægemiddel);
+        }
+
+        dagligSkæv.addAlleDoser(doser);
+        patient.addOrdinationer(dagligSkæv);
+
+        return dagligSkæv;
     }
 
     /**
