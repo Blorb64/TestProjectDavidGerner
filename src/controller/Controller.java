@@ -24,7 +24,7 @@ public abstract class Controller {
      * Pre: antal > 0.
      */
     public static PN opretPNOrdination(
-            LocalDate startDato, LocalDate slutDato, Patient patient, Lægemiddel lægemiddel,
+            LocalDate startDato, LocalDate slutDato, Patient patient, @Nullable Lægemiddel lægemiddel,
             double antal) {
 
         if (slutDato.isBefore(startDato))
@@ -47,7 +47,7 @@ public abstract class Controller {
      * Pre: morgenAntal, middagAntal, aftenAntal, natAntal >= 0
      */
     public static DagligFast opretDagligFastOrdination(
-            LocalDate startDato, LocalDate slutDato, Patient patient, Lægemiddel lægemiddel,
+            LocalDate startDato, LocalDate slutDato, Patient patient, @Nullable Lægemiddel lægemiddel,
             double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
 
             if (slutDato.isBefore(startDato)){
