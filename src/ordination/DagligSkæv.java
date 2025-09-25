@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DagligSkæv extends Ordination{
-    ArrayList<Dosis> doser = new ArrayList<>();
+    private final ArrayList<Dosis> doser = new ArrayList<>();
 
     public DagligSkæv(LocalDate startDato, LocalDate slutDato) {
         super(startDato, slutDato);
@@ -26,9 +26,11 @@ public class DagligSkæv extends Ordination{
     @Override
     public double doegnDosis() {
         double sum = 0;
+
         for (Dosis dosis : doser) {
             sum +=dosis.getAntal();
         }
+
         return sum;
     }
 
