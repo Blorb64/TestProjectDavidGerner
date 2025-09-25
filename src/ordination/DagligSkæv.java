@@ -28,7 +28,7 @@ public class DagligSkæv extends Ordination{
         double sum = 0;
 
         for (Dosis dosis : doser) {
-            sum +=dosis.getAntal();
+            sum += dosis.getAntal();
         }
 
         return sum;
