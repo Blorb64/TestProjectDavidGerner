@@ -34,25 +34,6 @@ public class PN extends Ordination{
         return doegnDosis() * antalGangeAnvendt();
     }
 
-//    @Override
-//    public double doegnDosis() {
-//        //TODO
-//        //skal rettes til også at kunne klare hvis datoerAnvendDosis er tom
-//        LocalDate firstDay = datoerAnvendDosis.getFirst();
-//        LocalDate lastDay = datoerAnvendDosis.getLast();
-//
-//        for (LocalDate dato : datoerAnvendDosis) {
-//            if(dato.isBefore(firstDay)){
-//                firstDay = dato;
-//            }
-//            if(dato.isAfter(lastDay)) {
-//                lastDay = dato;
-//            }
-//        }
-//
-//        return (antalGangeAnvendt() * this.antalEnheder) / ChronoUnit.DAYS.between(firstDay, lastDay);
-//    }
-
     @Override
     public double doegnDosis() {
         if (datoerAnvendDosis.isEmpty()) return 0;
