@@ -36,6 +36,8 @@ public class PN extends Ordination{
 
     @Override
     public double doegnDosis() {
+        //TODO
+            //skal rettes til også at kunne klare hvis datoerAnvendDosis er tom
         LocalDate firstDay = datoerAnvendDosis.getFirst();
         LocalDate lastDay = datoerAnvendDosis.getLast();
 
