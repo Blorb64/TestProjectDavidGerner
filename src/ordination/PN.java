@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class PN extends Ordination{
     private final double antalEnheder;
-    private ArrayList<LocalDate> datoerAnvendDosis = new ArrayList<>();
+    private final ArrayList<LocalDate> datoerAnvendDosis = new ArrayList<>();
 
     public PN(LocalDate startDato, LocalDate slutDato, double antalEnheder) {
         super(startDato, slutDato);
