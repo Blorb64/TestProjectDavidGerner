@@ -9,7 +9,7 @@ import ordination.*;
 import org.jspecify.annotations.Nullable;
 import storage.Storage;
 
-@SuppressWarnings("UnusedReturnValue")
+//@SuppressWarnings("UnusedReturnValue")
 public abstract class Controller {
     private static Storage storage;
 
@@ -60,8 +60,10 @@ public abstract class Controller {
                     new Dosis(LocalTime.parse("18:00"), aftenAntal),
                     new Dosis(LocalTime.parse("22:00"), natAntal)
             };
+
             DagligFast dagligFast = new DagligFast(startDato, slutDato, doser);
-            if (lægemiddel !=null){
+
+            if (lægemiddel != null){
                 dagligFast.setLægemiddel(lægemiddel);
             }
 
@@ -113,6 +115,7 @@ public abstract class Controller {
      * kastes en IllegalArgumentException.
      */
     public static void anvendOrdinationPN(PN ordination, LocalDate dato) {
+
         if (dato.isBefore(ordination.getStartDato()) || dato.isAfter(ordination.getSlutDato()))
             throw new IllegalArgumentException("dato er udenfor ordinations periode");
 
@@ -143,16 +146,20 @@ public abstract class Controller {
             double vægtStart, double vægtSlut, Lægemiddel lægemiddel) {
         List<Patient> allPatienter = getAllPatienter();
         int antalOrdinationerWithinReqs = 0;
+
         for (Patient patient : allPatienter) {
             if (patient.getVægt() > vægtStart && patient.getVægt() <= vægtSlut) {
+
                 List<Ordination> patientsOrdinationer = patient.getOrdinationer();
                 for (Ordination ordination : patientsOrdinationer) {
+
                     if (ordination.getLaegemiddel().equals(lægemiddel)) {
                         antalOrdinationerWithinReqs++;
                     }
                 }
             }
         }
+
         return antalOrdinationerWithinReqs;
     }
 
