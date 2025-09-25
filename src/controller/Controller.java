@@ -141,8 +141,19 @@ public abstract class Controller {
     /** Returner antal ordinationer for det givne vægtinterval og det givne lægemiddel. */
     public static int antalOrdinationerPrVægtPrLægemiddel(
             double vægtStart, double vægtSlut, Lægemiddel lægemiddel) {
-
-        return 0;
+        List<Patient> allPatienter = getAllPatienter();
+        int antalOrdinationerWithinReqs = 0;
+        for (Patient patient : allPatienter) {
+            if (patient.getVægt() > vægtStart && patient.getVægt() <= vægtSlut) {
+                List<Ordination> patientsOrdinationer = patient.getOrdinationer();
+                for (Ordination ordination : patientsOrdinationer) {
+                    if (ordination.getLaegemiddel().equals(lægemiddel)) {
+                        antalOrdinationerWithinReqs++;
+                    }
+                }
+            }
+        }
+        return antalOrdinationerWithinReqs;
     }
 
     public static List<Patient> getAllPatienter() {
