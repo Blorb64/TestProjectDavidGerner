@@ -6,7 +6,7 @@ public class Patient {
     private final String cprNr;
     private final String navn;
     private final double vægt;
-    private ArrayList<Ordination> ordinationer = new ArrayList<>();
+    private final ArrayList<Ordination> ordinationer = new ArrayList<>();
 
     public Patient(String cprNr, String navn, double vægt) {
         this.cprNr = cprNr;
