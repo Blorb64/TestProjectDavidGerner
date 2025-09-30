@@ -28,7 +28,7 @@ public abstract class Controller {
             double antal) {
 
         if (slutDato.isBefore(startDato))
-            throw new IllegalArgumentException("Startdato Skal være før slutdato");
+            throw new IllegalArgumentException("Startdato kan ikke være efter slutdato");
 
         PN pNOrdination = new PN(startDato, slutDato, antal);
 
