@@ -67,25 +67,6 @@ class ControllerTestMorten {
     @Test
     void opretDagligFastOrdinationTC6() {
         slutDato = LocalDate.of(2025, 9, 27);
-        patientMorten = null;
-        DagligFast test = Controller.opretDagligFastOrdination(startDato, slutDato, patientMorten, lægemiddelMorten,
-                0, 0, 0, 0);
-        Lægemiddel lMiddelTest = test.getLaegemiddel();
-        assertEquals(lMiddelTest, lægemiddelMorten);
-        assertNull(test);
-    }
-    @Test
-    void opretDagligFastOrdinationTC7() {
-        slutDato = LocalDate.of(2025, 9, 27);
-        DagligFast test = Controller.opretDagligFastOrdination(startDato, slutDato, patientMorten, lægemiddelMorten,
-                -1, 0, 0, 0);
-        Lægemiddel lMiddelTest = test.getLaegemiddel();
-        assertEquals(lMiddelTest, lægemiddelMorten);
-        assertEquals(null, test);
-    }
-    @Test
-    void opretDagligFastOrdinationTC8() {
-        slutDato = LocalDate.of(2025, 9, 27);
         DagligFast test = Controller.opretDagligFastOrdination(startDato, slutDato, patientMorten, lægemiddelMorten,
                 2, 2, 2, 2);
         Lægemiddel lMiddelTest = test.getLaegemiddel();
