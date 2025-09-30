@@ -25,6 +25,7 @@ class DagligFastTest {
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.samletDosis();
         assertEquals(0, result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void samletDosisTC2() {
@@ -37,6 +38,7 @@ class DagligFastTest {
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.samletDosis();
         assertEquals(4, result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void samletDosisTC3() {
@@ -49,6 +51,7 @@ class DagligFastTest {
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.samletDosis();
         assertEquals(15, result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void samletDosisTC4() {
@@ -60,7 +63,8 @@ class DagligFastTest {
         doser[3] = new Dosis(LocalTime.parse("22:00"), 1);
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.samletDosis();
-        assertEquals("fejl", result);
+        assertEquals(5, result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void samletDosisTC5() {
@@ -73,6 +77,7 @@ class DagligFastTest {
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.samletDosis();
         assertEquals("fejl", result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void samletDosisTC6() {
@@ -84,7 +89,8 @@ class DagligFastTest {
         doser[3] = new Dosis(LocalTime.parse("22:00"), 1);
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.samletDosis();
-        assertEquals("fejl", result);
+
+        assertEquals(4, doser.length);
     }
 
     @org.junit.jupiter.api.Test
@@ -96,6 +102,7 @@ class DagligFastTest {
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.doegnDosis();
         assertEquals(0, result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void doegnDosisTC2() {
@@ -106,6 +113,7 @@ class DagligFastTest {
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.doegnDosis();
         assertEquals(4, result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void doegnDosisTC3() {
@@ -116,6 +124,7 @@ class DagligFastTest {
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.doegnDosis();
         assertEquals(3, result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void doegnDosisTC4() {
@@ -126,6 +135,7 @@ class DagligFastTest {
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.doegnDosis();
         assertEquals("fejl", result);
+        assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
     void doegnDosisTC5() {
@@ -135,6 +145,7 @@ class DagligFastTest {
         doser[3] = new Dosis(LocalTime.parse("22:00"), 1);
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.doegnDosis();
-        assertEquals("fejl", result);
+        assertEquals(5, result);
+        assertEquals(4, doser.length);
     }
 }

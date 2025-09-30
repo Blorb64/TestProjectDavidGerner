@@ -131,13 +131,13 @@ public abstract class Controller {
 
         if (patientVægt < 25) {
             // let anvendes hvis patient vejer < 25 kg
-            return lægemiddel.getEnhedPrKgPrDøgnLet();
+            return lægemiddel.getEnhedPrKgPrDøgnLet() * patientVægt;
         } else if (patientVægt <= 120) {
             // faktor der anvendes hvis 25 kg <= patient vægt <= 120 kg
-            return lægemiddel.getEnhedPrKgPrDøgnNormal();
+            return lægemiddel.getEnhedPrKgPrDøgnNormal() * patientVægt;
         } else {
             // faktor der anvendes hvis patient vægt > 120 kg
-            return lægemiddel.getEnhedPrKgPrDøgnTung();
+            return lægemiddel.getEnhedPrKgPrDøgnTung() * patientVægt;
         }
     }
 
