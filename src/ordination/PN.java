@@ -50,7 +50,7 @@ public class PN extends Ordination{
             }
         }
 
-        return (antalGangeAnvendt() * this.antalEnheder) / ChronoUnit.DAYS.between(firstDay, lastDay);
+        return (antalGangeAnvendt() * this.antalEnheder) / (ChronoUnit.DAYS.between(firstDay, lastDay) + 1);
     }
 
     @Override
