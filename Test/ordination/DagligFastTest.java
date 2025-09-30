@@ -76,7 +76,7 @@ class DagligFastTest {
         doser[3] = new Dosis(LocalTime.parse("22:00"), 0);
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.samletDosis();
-        assertEquals("fejl", result);
+        assertEquals(-1, result);
         assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test
@@ -134,7 +134,7 @@ class DagligFastTest {
         doser[3] = new Dosis(LocalTime.parse("22:00"), 0);
         DagligFast test = new DagligFast(startDato, slutDato, doser);
         double result = test.doegnDosis();
-        assertEquals("fejl", result);
+        assertEquals(-1, result);
         assertEquals(4, doser.length);
     }
     @org.junit.jupiter.api.Test

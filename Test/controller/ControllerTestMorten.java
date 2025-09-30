@@ -81,7 +81,7 @@ class ControllerTestMorten {
                 -1, 0, 0, 0);
         Lægemiddel lMiddelTest = test.getLaegemiddel();
         assertEquals(lMiddelTest, lægemiddelMorten);
-        assertNull(test);
+        assertEquals(null, test);
     }
     @Test
     void opretDagligFastOrdinationTC8() {
@@ -115,7 +115,7 @@ class ControllerTestMorten {
     void anbefaletDosisPrDøgnTC4() {
         patientMorten = new Patient("222202-2203", "Morten Jakobsen", 0);
         double result = Controller.anbefaletDosisPrDøgn(patientMorten, lægemiddelMorten);
-        assertEquals(null, result);
+        assertEquals(0, result);
     }
 
 }
