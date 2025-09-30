@@ -145,15 +145,45 @@ class ControllerTestDavid {
 
 
 
-    /*
+
     @Test
-    void anvendOrdinationPN() {
+    void anvendOrdinationPNtC1() {
         PN pnTC1 = new PN(
                 LocalDate.parse("2025-09-26"),
                 LocalDate.parse("2025-09-27"), antalAnvendPN);
         Controller.anvendOrdinationPN(pnTC1,datoAnvendPN);
-        assertEquals(pnTC1.().getLast(), TC6);
+        assertEquals(pnTC1.getDatoerAnvendDosis().getLast(), datoAnvendPN);
     }
 
-     */
+    @Test
+    void anvendOrdinationPNtC2() {
+        PN pnTC1 = new PN(
+                LocalDate.parse("2025-09-17"),
+                LocalDate.parse("2025-09-27"), antalAnvendPN);
+        Controller.anvendOrdinationPN(pnTC1,datoAnvendPN);
+        assertEquals(pnTC1.getDatoerAnvendDosis().getLast(), datoAnvendPN);
+    }
+
+    @Test
+    void anvendOrdinationPNtC3() {
+        PN pnTC3 = new PN(
+                LocalDate.parse("2025-09-27"),
+                LocalDate.parse("2025-09-28"), antalAnvendPN);
+        Exception exception = assertThrows(RuntimeException.class, () ->
+                        Controller.anvendOrdinationPN(pnTC3,datoAnvendPN));
+
+        assertEquals("dato er udenfor ordinations periode", exception.getMessage());
+    }
+
+    @Test
+    void anvendOrdinationPNtC4() {
+        PN pnTC3 = new PN(
+                LocalDate.parse("2025-09-17"),
+                LocalDate.parse("2025-09-20"), antalAnvendPN);
+        Exception exception = assertThrows(RuntimeException.class, () ->
+                Controller.anvendOrdinationPN(pnTC3,datoAnvendPN));
+
+        assertEquals("dato er udenfor ordinations periode", exception.getMessage());
+    }
+
 }
