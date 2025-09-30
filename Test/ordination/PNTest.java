@@ -11,7 +11,7 @@ class PNTest {
     private PN pn;
 
     @BeforeEach
-    void opretPn(){
+    void setUp(){
         pn = new PN(LocalDate.of(2025, 10, 20),
                 LocalDate.of(2025, 10, 28), 30);
     }
