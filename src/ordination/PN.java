@@ -17,6 +17,10 @@ public class PN extends Ordination{
         return antalEnheder;
     }
 
+    public ArrayList<LocalDate> getDatoerAnvendDosis() {
+        return datoerAnvendDosis;
+    }
+
     /**
      * Registrer datoen for en anvendt dosis.
      */
