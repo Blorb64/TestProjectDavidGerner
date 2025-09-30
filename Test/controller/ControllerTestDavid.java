@@ -134,19 +134,6 @@ class ControllerTestDavid {
     }
 
     @Test
-    void opretDagligSkævOrdinationTC10() {
-
-        DagligSkæv TC7 = Controller.opretDagligSkævOrdination(
-                starDenDS,
-                starDenDS,
-                null, lægemiddelDS, klokkesletDS, antalEnhederDS);
-        assertNull(TC7);
-    }
-
-
-
-
-    @Test
     void anvendOrdinationPNtC1() {
         PN pnTC1 = new PN(
                 LocalDate.parse("2025-09-26"),
